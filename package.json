@@ -1,0 +1,41 @@
+{
+  "name": "plataforma-afro",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Plataforma de gestão de Territórios, Agendas e Coletivo com Central de Comando IA",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db:migrate": "node scripts/migrar.mjs",
+    "db:seed": "node scripts/seed.mjs",
+    "hash": "node scripts/criar-hash.mjs"
+  },
+  "dependencies": {
+    "@ai-sdk/anthropic": "^2.0.0",
+    "@ai-sdk/google": "^2.0.74",
+    "@neondatabase/serverless": "^0.10.4",
+    "ai": "^5.0.0",
+    "bcryptjs": "^2.4.3",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "jose": "^5.9.6",
+    "lucide-react": "^0.469.0",
+    "next": "^15.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^2.6.0",
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.0"
+  }
+}

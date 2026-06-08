@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Tema afro-periférico. Dark mode é o PADRÃO (a plataforma nasce escura).
+  Valores em HSL para casar com a convenção shadcn/ui.
+*/
+@layer base {
+  :root {
+    /* Modo claro (fallback) — pergaminho quente */
+    --background: 35 40% 96%;
+    --foreground: 25 45% 12%;
+    --card: 35 35% 99%;
+    --card-foreground: 25 45% 12%;
+    --primary: 18 81% 40%; /* terracota #C2410C */
+    --primary-foreground: 40 50% 97%;
+    --secondary: 38 92% 45%; /* dourado/ocre */
+    --secondary-foreground: 25 45% 12%;
+    --muted: 33 25% 88%;
+    --muted-foreground: 25 20% 38%;
+    --accent: 79 60% 24%; /* verde folha */
+    --accent-foreground: 40 50% 97%;
+    --destructive: 0 72% 42%;
+    --destructive-foreground: 40 50% 97%;
+    --border: 30 25% 82%;
+    --input: 30 25% 82%;
+    --ring: 38 92% 45%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    /* Modo escuro sofisticado — café/carvão com brasa de terracota e ouro */
+    --background: 24 35% 6%; /* #1C1410 café profundo */
+    --foreground: 35 40% 92%; /* creme quente */
+    --card: 24 30% 9%;
+    --card-foreground: 35 40% 92%;
+    --primary: 18 81% 48%; /* terracota mais viva no escuro */
+    --primary-foreground: 35 45% 97%;
+    --secondary: 41 78% 46%; /* dourado #D4A017 */
+    --secondary-foreground: 24 35% 8%;
+    --muted: 24 20% 16%;
+    --muted-foreground: 33 18% 64%;
+    --accent: 79 45% 32%; /* verde axé */
+    --accent-foreground: 35 45% 97%;
+    --destructive: 0 62% 46%;
+    --destructive-foreground: 35 45% 97%;
+    --border: 26 22% 18%;
+    --input: 26 22% 18%;
+    --ring: 41 78% 46%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}

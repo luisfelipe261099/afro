@@ -1,0 +1,13 @@
+node_modules
+.next
+out
+build
+.DS_Store
+
+# variáveis com segredos — NUNCA commitar
+.env
+.env.local
+.env*.local
+
+*.tsbuildinfo
+next-env.d.ts
