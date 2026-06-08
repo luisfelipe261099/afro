@@ -38,10 +38,10 @@ Adicione as três, para **Production** (e Preview/Development se quiser):
 | `CRON_SECRET` | segredo do cron de lembretes (`openssl rand -base64 32`). A Vercel envia automaticamente no header do cron. |
 
 ### Lembretes automáticos (Vercel Cron)
-O `vercel.json` já agenda `/api/cron/lembretes` de hora em hora — ele avisa os
-responsáveis dos eventos que começam nas próximas 24h. No **plano Hobby**, a Vercel
-pode limitar a frequência (rodar 1x/dia); se precisar de hora em hora, ajuste o
-`schedule` ou faça upgrade. Defina o `CRON_SECRET` pra proteger o endpoint.
+O `vercel.json` agenda `/api/cron/lembretes` **1x por dia** (`0 11 * * *` = 08h de
+Brasília) — ele avisa os responsáveis dos eventos que começam nas próximas 24h.
+O **plano Hobby (grátis)** só permite cron diário; pra rodar de hora em hora
+(`0 * * * *`) é preciso o plano **Pro**. Defina o `CRON_SECRET` pra proteger o endpoint.
 
 > ⚠️ O `JWT_SECRET` é usado tanto nas API Routes quanto no **Edge Middleware** —
 > defina-o no painel da Vercel, senão o middleware barra todo mundo.
