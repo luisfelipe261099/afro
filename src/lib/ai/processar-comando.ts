@@ -7,14 +7,15 @@ import type { UsuarioSessao } from "../permissions";
 
 /**
  * Modelo da Central de Comando — Google Gemini.
- * Padrão: gemini-2.0-flash (rápido, barato, com camada gratuita e function calling).
- * Alternativas: 'gemini-2.5-flash' (mais novo) ou 'gemini-1.5-pro' (mais capaz).
- * A chave vai em GOOGLE_GENERATIVE_AI_API_KEY no .env.local.
+ * Padrão: gemini-2.0-flash-lite (leve, com camada GRATUITA e function calling).
+ * Alternativa com free tier: 'gemini-1.5-flash'.
+ * Mais capazes (podem exigir billing): 'gemini-2.0-flash', 'gemini-2.5-flash'.
+ * A chave vai em GOOGLE_GENERATIVE_AI_API_KEY (Vercel / .env.local).
  *
  * Pra voltar pro Claude: troque para `import { anthropic } from "@ai-sdk/anthropic"`,
  * use anthropic("claude-opus-4-8") abaixo e defina ANTHROPIC_API_KEY.
  */
-export const MODELO_IA = "gemini-2.0-flash";
+export const MODELO_IA = "gemini-2.0-flash-lite";
 
 export type ResultadoComando = {
   resumo: string;
