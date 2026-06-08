@@ -91,20 +91,28 @@ export default async function AppLayout({
       </aside>
 
       {/* Conteúdo */}
-      <div className="flex flex-1 flex-col">
-        {/* Barra única: menu (celular) + comando + sino */}
-        <header className="sticky top-0 z-20 flex items-center gap-2 border-b border-border bg-background/80 px-3 py-2.5 backdrop-blur md:gap-3 md:px-6 md:py-4">
-          <div className="md:hidden">
-            <NavMobile
-              territorios={usuario.territorios}
-              papel={usuario.papel}
-              nome={usuario.nome}
-            />
-          </div>
+      <div className="flex min-w-0 flex-1 flex-col overflow-x-clip">
+        {/* Barra de topo — só celular: menu + nome + sino */}
+        <div className="flex items-center justify-between gap-2 border-b border-border bg-card/60 px-3 py-2.5 md:hidden">
+          <NavMobile
+            territorios={usuario.territorios}
+            papel={usuario.papel}
+            nome={usuario.nome}
+          />
+          <span className="font-display text-base font-bold text-foreground">
+            Agenda<span className="text-secondary">Afro</span>
+          </span>
+          <SininhoNotificacoes />
+        </div>
+
+        {/* Barra de Comando IA — linha própria */}
+        <header className="sticky top-0 z-20 flex items-center gap-3 border-b border-border bg-background/80 px-3 py-2.5 backdrop-blur md:px-6 md:py-4">
           <div className="min-w-0 flex-1">
             <CentralComando />
           </div>
-          <SininhoNotificacoes />
+          <div className="hidden md:block">
+            <SininhoNotificacoes />
+          </div>
         </header>
 
         <main className="flex-1 p-4 md:p-6">{children}</main>
