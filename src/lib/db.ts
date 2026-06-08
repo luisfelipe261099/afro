@@ -12,7 +12,21 @@ import { neon } from "@neondatabase/serverless";
  * escrevendo "?" e ficam agnósticas ao banco. Para INSERTs que precisam do id,
  * use `inserir` com "... RETURNING id".
  */
-const sql = neon(process.env.DATABASE_URL!);
+/**
+ * Conexão preguiçosa: só cria quando a primeira query roda (não ao importar o
+ * módulo). Isso evita quebrar o `next build` caso a DATABASE_URL não esteja
+ * disponível no momento em que o bundler avalia os módulos.
+ */
+let _sql: ReturnType<typeof neon> | null = null;
+function sql(texto: string, params: unknown[]) {
+  if (!_sql) {
+    if (!process.env.DATABASE_URL) {
+      throw new Error("DATABASE_URL não definida");
+    }
+    _sql = neon(process.env.DATABASE_URL);
+  }
+  return _sql(texto, params as never[]);
+}
 
 /** Converte "?" -> "$1, $2, ..." (queries já em "$n" passam intactas). */
 function paraPg(texto: string): string {
@@ -60,5 +74,3 @@ export async function inserir(
   }[];
   return rows[0]?.id ?? null;
 }
-
-export const db = sql;
