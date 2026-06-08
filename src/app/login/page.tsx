@@ -32,9 +32,12 @@ export default function LoginPage() {
   }
 
   return (
-    <main className="relative grid min-h-screen place-items-center overflow-hidden px-6">
-      <PadraoAfro id="afroLogin" className="absolute inset-0 h-full w-full" />
-      <div className="absolute inset-0 bg-carvao/80" />
+    <main className="relative grid min-h-screen place-items-center overflow-hidden bg-carvao px-6">
+      <PadraoAfro
+        id="afroLogin"
+        className="pointer-events-none absolute inset-0 h-full w-full opacity-25"
+      />
+      <div className="absolute inset-0 bg-black/45" />
       <form
         onSubmit={entrar}
         className="relative z-10 w-full max-w-sm rounded-2xl border border-border bg-card/90 p-7 shadow-2xl backdrop-blur"
